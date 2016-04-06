@@ -246,7 +246,8 @@ export default class HLS extends HTML5VideoPlayback {
 
     if (newDuration !== this.playableRegionDuration) {
       durationChanged = true
-      this.playableRegionDuration = newDuration
+      this.hls.bufferController.mediaSource.duration = this.playableRegionDuration = newDuration
+      this.onDurationChange()
     }
 
     // now that the values have been updated call any methods that use on them so they get the updated values
