@@ -168,7 +168,9 @@ export default class HTML5Video extends Playback {
   stop() {
     this.pause()
     this.stopped = true
-    this.el.currentTime = 0
+    if (this.el && this.el.currentTime) {
+      this.el.currentTime = 0
+    }
     this.stopPlayheadMovingChecks()
     this.handleBufferingEvents()
     this.trigger(Events.PLAYBACK_STOP)
